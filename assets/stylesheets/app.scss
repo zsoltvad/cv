@@ -1,0 +1,259 @@
+@import 'colors';
+@import 'metrics';
+
+html, body, ul, li,
+h1, h2, h3, h4, h5, p {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	min-height: 100vh;
+}
+
+ul, li {
+	list-style: none;
+}
+
+* {
+	outline: none;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	background-color: $cv-color-light;
+	color: $cv-color-base;
+	font-size: 100%;
+	font-family: 'Lato', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+
+	#cv-content {
+		flex: 1;
+		padding: 20px;
+
+		#cv-experiences {
+			text-transform: uppercase;
+			text-align: center;
+			margin-bottom: 30px;
+			font-size: $cv-font-size-heading;
+			color: rgba( $cv-color-base, .5 );
+		}
+
+		#cv-timeline {
+			position: relative;
+			padding: 30px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				height: 100%;
+				width: 4px;
+				background: rgba( $cv-color-primary, .1 );
+				transform: translate( -50%, 0 );
+			}
+
+			.cv-timeline-block {
+				display: flex;
+				justify-content: space-between;
+				position: relative;
+				margin-bottom: 30px;
+
+				.cv-timeline-ball {
+					position: absolute;
+					top: 0;
+					left: 50%;
+					width: 30px;
+					height: 30px;
+					border-radius: 50%;
+					background-color: $cv-color-secondary;
+					border: 4px solid $cv-color-light;
+					transform: translate( -50%, 0 );
+				}
+
+				.cv-timeline-content, .cv-timeline-date {
+					width: 45%;
+				}
+
+				.cv-timeline-content {
+					padding: 10px;
+					background-color: $cv-color-white;
+					border-radius: 5px;
+
+					h2 {
+						font-size: $cv-font-size-normal;
+						color: $cv-color-secondary;
+						text-transform: uppercase;
+						margin-bottom: 5px;
+					}
+
+					h3 {
+						font-size: $cv-font-size-normal;
+						color: rgba( $cv-color-base, .5 );
+						margin-bottom: 10px;
+					}
+
+					.cv-timeline-products, .cv-timeline-technologies {
+						text-align: justify;
+					}
+
+					.cv-timeline-products {
+						margin-bottom: 10px;
+					}
+
+					.cv-timeline-technologies {
+						color: rgba( $cv-color-primary, .5 );
+					}
+				}
+
+				.cv-timeline-date {
+					padding: 4px 0;
+					color: rgba( $cv-color-base, .5 );
+				}
+
+				&:nth-child(even) {
+
+					.cv-timeline-content {
+						order: 2;
+					}
+
+					.cv-timeline-date {
+						order: 1;
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+
+	#cv-sidebar {
+		display: flex;
+		flex-direction: column;
+		width: 320px;
+		background-color: $cv-color-secondary;
+		color: $cv-color-light;
+
+		#cv-profile {
+			position: relative;
+			overflow: hidden;
+			height: 300px;
+			background-color: $cv-color-primary;
+
+			img {
+				transition: .25s;
+			}
+
+			#cv-profile-name, #cv-profile-job {
+				position: absolute;
+				z-index: 2;
+				left: 50%;
+				transform: translate( -50%, 0 );
+			}
+
+			#cv-profile-name {
+				font-size: $cv-font-size-heading;
+				bottom: 50px;
+			}
+
+			#cv-profile-job {
+				bottom: 30px;
+				color: $cv-color-secondary;
+			}
+
+			&::before {
+				position: absolute;
+				z-index: 1;
+				display: block;
+				content: '';
+				background: none;
+				background: linear-gradient( to top, rgba( $cv-color-black, .8 ), transparent );
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+			&:hover {
+
+				img {
+					transform: rotate( 5deg ) scale( 1.2 );
+				}
+			}
+		}
+
+		#cv-details {
+			flex: 1;
+			padding: 30px;
+
+			#cv-contact {
+				margin-bottom: 30px;
+
+				& > div {
+					margin-bottom: 20px;
+
+					.fa {
+						margin-right: 10px;
+						color: $cv-color-primary;
+					}
+				}
+			}
+
+			#cv-skills, #cv-education, #cv-languages {
+				margin-bottom: 30px;
+
+				.cv-details-heading {
+					text-transform: uppercase;
+					margin-bottom: 15px;
+					color: $cv-color-primary;
+				}
+			}
+
+			#cv-skills {
+
+				#cv-skills-cloud {
+					text-align: justify;
+
+					#cv-skill-level-experienced {
+						color: rgba( $cv-color-light, .8 );
+					}
+
+					#cv-skill-level-obsolete {
+						color: rgba( $cv-color-light, .6 );
+					}
+				}
+			}
+
+			#cv-education {
+
+				#cv-education-list {
+
+					li {
+						margin-bottom: 20px;
+
+						.cv-education-university, .cv-education-interval {
+							color: rgba( $cv-color-light, .5 );
+						}
+					}
+				}
+			}
+
+			#cv-languages {
+
+				#cv-languages-list {
+
+					li {
+						margin-bottom: 20px;
+
+						.cv-language-level {
+							color: rgba( $cv-color-light, .5 );
+						}
+					}
+				}
+			}
+		}
+	}
+}
