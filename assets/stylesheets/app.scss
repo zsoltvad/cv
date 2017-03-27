@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'metrics';
+@import 'mixins';
 
 html, body, ul, li,
 h1, h2, h3, h4, h5, p {
@@ -34,6 +35,8 @@ body {
 		flex: 1;
 		padding: 20px;
 
+		@include screen( medium ) { order: 2; display: none; }
+
 		#cv-experiences {
 			text-transform: uppercase;
 			text-align: center;
@@ -46,6 +49,8 @@ body {
 			position: relative;
 			padding: 30px;
 
+			@include screen( x-large ) { padding: 30px 0 30px 30px; }
+
 			&::before {
 				content: '';
 				position: absolute;
@@ -55,6 +60,8 @@ body {
 				width: 4px;
 				background: rgba( $cv-color-primary, .1 );
 				transform: translate( -50%, 0 );
+
+				@include screen( x-large ) { left: 5px; }
 			}
 
 			.cv-timeline-block {
@@ -62,6 +69,8 @@ body {
 				justify-content: space-between;
 				position: relative;
 				margin-bottom: 30px;
+
+				@include screen( x-large ) { flex-wrap: wrap; }
 
 				.cv-timeline-ball {
 					position: absolute;
@@ -73,16 +82,22 @@ body {
 					background-color: $cv-color-secondary;
 					border: 4px solid $cv-color-light;
 					transform: translate( -50%, 0 );
+
+					@include screen( x-large ) { left: -25px; }
 				}
 
 				.cv-timeline-content, .cv-timeline-date {
 					width: 45%;
+
+					@include screen( x-large ) { width: 100%; }
 				}
 
 				.cv-timeline-content {
 					padding: 10px;
 					background-color: $cv-color-white;
 					border-radius: 5px;
+
+					@include screen( x-large ) { order: 2; }
 
 					h2 {
 						font-size: $cv-font-size-normal;
@@ -113,6 +128,8 @@ body {
 				.cv-timeline-date {
 					padding: 4px 0;
 					color: rgba( $cv-color-base, .5 );
+
+					@include screen( x-large ) { order: 1; margin-bottom: 15px; text-align: center; }
 				}
 
 				&:nth-child(even) {
@@ -124,6 +141,8 @@ body {
 					.cv-timeline-date {
 						order: 1;
 						text-align: right;
+
+						@include screen( x-large ) { text-align: center; }
 					}
 				}
 			}
@@ -137,14 +156,19 @@ body {
 		background-color: $cv-color-secondary;
 		color: $cv-color-light;
 
+		@include screen( medium ) { order: 1; width: 100%; }
+
 		#cv-profile {
 			position: relative;
 			overflow: hidden;
 			height: 300px;
-			background-color: $cv-color-primary;
+			background: $cv-color-primary url( '/public/assets/profile-320.jpg' ) no-repeat center center;
+			background-size: 320px 320px;
 
-			img {
-				transition: .25s;
+			@include screen( medium ) {
+				height: 400px;
+				background-image: url( '/public/assets/profile-450.jpg' );
+				background-size: 450px 450px;
 			}
 
 			#cv-profile-name, #cv-profile-job {
@@ -175,13 +199,6 @@ body {
 				left: 0;
 				right: 0;
 				bottom: 0;
-			}
-
-			&:hover {
-
-				img {
-					transform: rotate( 5deg ) scale( 1.2 );
-				}
 			}
 		}
 
